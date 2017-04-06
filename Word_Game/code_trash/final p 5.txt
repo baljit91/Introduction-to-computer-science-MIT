@@ -1,0 +1,263 @@
+# Enter your code for NewsStory in this box
+class NewsStory(object):
+    def __init__(self, guid, title, subject, summary, link):
+        self.guid = guid
+        self.title = title
+        self.subject = subject
+        self.summary = summary
+        self.link = link
+
+    def getGuid(self):
+        return self.guid
+
+    def getTitle(self):
+        return self.title
+
+    def getSubject(self):
+        return self.subject
+
+    def getSummary(self):
+        return self.summary
+
+    def getLink(self):
+        return self.link
+
+
+
+
+222222222222
+
+
+
+# Enter your code for WordTrigger, TitleTrigger, 
+# SubjectTrigger, and SummaryTrigger in this box
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+
+    def is_word_in(self, text):
+        word = self.word.lower()
+        text = text.lower()
+
+        # Remove punctation and split the text
+        for punc in string.punctuation:
+            text = text.replace(punc, " ")
+        splittext = text.split(" ")
+
+        # Check if the word is in the text
+        return word in splittext
+        
+class TitleTrigger(WordTrigger):
+##    def __init__(self, word):
+##        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getTitle())
+    
+# TODO: SubjectTrigger
+class SubjectTrigger(WordTrigger):
+    def __init__(self, word):
+        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getSubject())
+    
+# TODO: SummaryTrigger
+class SummaryTrigger(WordTrigger):
+    def __init__(self, word):
+        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getSummary())        
+
+
+3333333333333333
+
+
+# Enter your code for WordTrigger, TitleTrigger,
+# NotTrigger, AndTrigger, and OrTrigger in this box
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+
+    def isWordIn(self, text):
+        word = self.word.lower()
+        text = text.lower()
+
+        # Remove punctation and split the text
+        for punc in string.punctuation:
+            text = text.replace(punc, " ")
+        splittext = text.split(" ")
+
+        # Check if the word is in the text
+        return word in splittext
+class TitleTrigger(WordTrigger):
+##    def __init__(self, word):
+##        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.isWordIn(story.getTitle())
+        
+class NotTrigger(Trigger):
+    def __init__(self, trigger):
+        self.t = trigger
+
+    def evaluate(self, story):
+        return not self.t.evaluate(story)
+    
+# TODO: AndTrigger
+class AndTrigger(Trigger):
+    def __init__(self, trigger1, trigger2):
+        self.t1 = trigger1
+        self.t2 = trigger2
+
+    def evaluate(self, story):
+        return self.t1.evaluate(story) and self.t2.evaluate(story)
+    
+# TODO: OrTrigger
+class OrTrigger(Trigger):
+    def __init__(self, trigger1, trigger2):
+        self.t1 = trigger1
+        self.t2 = trigger2
+
+    def evaluate(self, story):
+        return self.t1.evaluate(story) or self.t2.evaluate(story)
+        
+
+
+
+
+
+
+
+
+
+4444444444444444444444444444444
+
+
+
+
+
+
+# Enter your code for WordTrigger, TitleTrigger,
+# SubjectTrigger, SummaryTrigger, and PhraseTrigger in this box
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+
+    def isWordIn(self, text):
+        word = self.word.lower()
+        text = text.lower()
+
+        # Remove punctation and split the text
+        for punc in string.punctuation:
+            text = text.replace(punc, " ")
+        splittext = text.split(" ")
+
+        # Check if the word is in the text
+        return word in splittext
+class TitleTrigger(WordTrigger):
+##    def __init__(self, word):
+##        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.isWordIn(story.getTitle())
+        
+class SubjectTrigger(WordTrigger):
+    def __init__(self, word):
+        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getSubject())
+        
+class SummaryTrigger(WordTrigger):
+    def __init__(self, word):
+        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getSummary())   
+        
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase
+
+    def evaluate(self, story):
+        return self.phrase in story.getTitle() or \
+               self.phrase in story.getSummary() or \
+               self.phrase in story.getSubject()        
+
+
+555555555555555555555555555
+
+
+
+
+# Enter your code for WordTrigger, TitleTrigger,
+# SubjectTrigger, SummaryTrigger, PhraseTrigger, and 
+# filterStories in this box
+# Enter your code for WordTrigger, TitleTrigger,
+# SubjectTrigger, SummaryTrigger, and PhraseTrigger in this box
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+
+    def isWordIn(self, text):
+        word = self.word.lower()
+        text = text.lower()
+
+        # Remove punctation and split the text
+        for punc in string.punctuation:
+            text = text.replace(punc, " ")
+        splittext = text.split(" ")
+
+        # Check if the word is in the text
+        return word in splittext
+class TitleTrigger(WordTrigger):
+##    def __init__(self, word):
+##        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.isWordIn(story.getTitle())
+        
+class SubjectTrigger(WordTrigger):
+    def __init__(self, word):
+        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getSubject())
+        
+class SummaryTrigger(WordTrigger):
+    def __init__(self, word):
+        WordTrigger.__init__(self, word)
+
+    def evaluate(self, story):
+        return self.is_word_in(story.getSummary())   
+        
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase
+
+    def evaluate(self, story):
+        return self.phrase in story.getTitle() or \
+               self.phrase in story.getSummary() or \
+               self.phrase in story.getSubject()        
+               
+def filterStories(stories, triggerlist):
+    """
+    Takes in a list of NewsStory-s.
+    Returns only those stories for whom
+    a trigger in triggerlist fires.
+    """
+    # TODO: Problem 10
+    # This is a placeholder (we're just returning all the stories, with no filtering) 
+    # Feel free to change this line!
+##  return stories
+    res = []
+    for story in stories:
+        for trigger in triggerlist:
+            if trigger.evaluate(story):
+                res.append(story)
+                break
+    return res               
+        
+        
